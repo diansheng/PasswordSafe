@@ -3,16 +3,12 @@ package fruit.banana.crypto;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.security.AlgorithmParameters;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.security.spec.KeySpec;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -76,9 +72,14 @@ public class SecureMessage {
 				record.setHeader(header);
 				rc.addRecord(record);
 				break;
+			case 5:
+				System.out.println("System exit...");
+				break;
+			default:
+				break;
 			}
-		}while(selection!=0);
-		
+		}while(selection!=5);
+		sc.close();
 	}
 	
 	public void updateRecord() throws IOException{
@@ -195,7 +196,7 @@ public class SecureMessage {
 		}
 	}
 	
-	private void createKey(){
+	void createKey(){
 		/* Derive the key, given password and salt. */
 	    try{
 			SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");

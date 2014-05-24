@@ -1,7 +1,5 @@
 package fruit.banana.crypto;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class SecureMessageTest {
@@ -13,3 +11,4 @@ public class SecureMessageTest {
 	}
 
 }
+
